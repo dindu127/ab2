@@ -1,0 +1,92 @@
+<div class="home-page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1>Land that builds your future</h1>
+      <p>
+        Discover verified land listings, connect directly with owners,
+        and make confident property decisions with LandPortal.
+      </p>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <section class="search-section">
+    <form
+      [formGroup]="searchForm"
+      (ngSubmit)="submitSearch()"
+      class="search-form"
+      novalidate
+    >
+      <div class="filters-row">
+
+        <div class="filter-item wide">
+          <select formControlName="location" class="input-control">
+            <option value="">
+              {{ loadingCities ? 'Loading cities…' : 'Location' }}
+            </option>
+            <option *ngFor="let loc of locations" [value]="loc">
+              {{ loc }}
+            </option>
+          </select>
+        </div>
+
+        <div class="filter-item">
+          <input type="number" placeholder="Min Price" formControlName="minPrice" class="input-control" />
+        </div>
+
+        <div class="filter-item">
+          <input type="number" placeholder="Max Price" formControlName="maxPrice" class="input-control" />
+        </div>
+
+        <div class="filter-item">
+          <input type="text" placeholder="Land Size(sq.ft/acre)" formControlName="size" class="input-control" />
+        </div>
+
+        <div class="filter-item">
+          <select formControlName="sortBy" class="input-control">
+            <option value="">Sort by</option>
+            <option value="listedDesc">Newest</option>
+            <option value="priceAsc">Price: Low → High</option>
+            <option value="priceDesc">Price: High → Low</option>
+            <option value="sizeDesc">Land size: Large → Small</option>
+            <option value="featuredfirst">Featured first</option>
+          </select>
+        </div>
+
+        <div class="action-group">
+          <button type="submit" class="btn-primary">Search</button>
+          <button type="button" class="btn-secondary" (click)="resetSearch()">Reset</button>
+        </div>
+
+      </div>
+    </form>
+
+    <div class="results-info" *ngIf="searchMode">
+      Showing {{ properties.length }} of {{ total }} results
+    </div>
+  </section>
+
+  <!-- PROPERTIES -->
+  <section class="featured">
+    <h2>{{ searchMode ? 'Search Results' : 'Featured Properties' }}</h2>
+
+    <p class="subtitle" *ngIf="!searchMode">
+      Hand-picked lands attracting high interest from buyers.
+    </p>
+
+    <app-property-grid
+      [properties]="properties"
+      [loading]="loading"
+      [showFeatured]="true">
+    </app-property-grid>
+
+    <div class="loading-more" *ngIf="loadingMore">
+      Loading more properties…
+    </div>
+  </section>
+
+</div>

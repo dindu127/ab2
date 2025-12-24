@@ -1,0 +1,132 @@
+<div class="auth-page">
+
+    <!-- LOGO + NAME (CENTERED) -->
+  <div class="auth-brand" routerLink="/">
+    <img src="assets/images/Logo_White.png" alt="LandPortal Logo" class="logo"/>
+  </div>
+
+<div class="auth-card">
+  <h2>Create Your Account</h2>
+    <p class="subtitle">
+      Join ABS² and list your properties with confidence
+    </p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">.
+
+    <!-- PROFILE PHOTO -->
+    <div class="profile-photo-box">
+      <img
+        *ngIf="photoPreview"
+        [src]="photoPreview"
+        class="profile-preview"/>
+
+      <div *ngIf="!photoPreview" class="profile-placeholder"> Upload Photo  </div>
+
+      <input
+        type="file"
+        accept="image/*"
+        (change)="onPhotoSelected($event)"/>
+       </div>
+
+
+    <!-- NAME -->
+    <label>Name</label>
+    <input formControlName="name" placeholder="Your full name" />
+    <div class="error" *ngIf="submitted && f['name'].invalid">
+      <div *ngIf="f['name'].errors?.['required']">Name is required</div>
+      <div *ngIf="f['name'].errors?.['minlength']">At least 2 characters</div>
+    </div>
+
+    <!-- EMAIL -->
+    <label>Email</label>
+    <input
+      formControlName="email"
+      placeholder="you@example.com"
+      [readonly]="emailVerified"/>
+      
+    <div class="error" *ngIf="submitted && f['email'].invalid">
+      <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+      <div *ngIf="f['email'].errors?.['email']">Invalid email</div>
+    </div>
+
+    <div class="field-error" *ngIf="emailError"> {{ emailError }} </div>
+
+    <!-- SEND OTP -->
+    <button
+      type="button" class="btn-primary"
+      (click)="sendOtp()"
+      [disabled]="otpLoading || f['email'].invalid || emailVerified">
+      {{ emailVerified ? 'Email Verified' : (otpLoading ? 'Sending OTP…' : 'Send OTP') }}
+    </button>
+   
+    <!-- OTP SECTION -->
+    <div *ngIf="otpSent && !emailVerified">
+      <h1>Enter OTP</h1>
+
+      <input
+        type="text"
+        placeholder="6-digit OTP"
+        [(ngModel)]="otp"
+        [ngModelOptions]="{ standalone: true }" maxlength="6" />
+
+       <!-- OTP ERROR (only when OTP is wrong) -->
+        <div class="field-error" *ngIf="otpError && otp">
+          {{ otpError }}
+        </div>
+
+      <button
+        type="button"
+        class="btn-primary"
+        (click)="verifyOtp()"
+        [disabled]="otpLoading || !otp">
+        {{ otpLoading ? 'Verifying…' : 'Verify OTP' }}
+      </button>
+    </div>
+
+     <!-- PHONE -->
+    <label>Phone</label>
+    <input formControlName="phone" placeholder="Phone number (digits only)" />
+    <div class="error" *ngIf="submitted && f['phone'].invalid">
+      <div *ngIf="f['phone'].errors?.['pattern']">Enter valid 10-digit Indian mobile number</div>
+      <div *ngIf="f['phone'].errors?.['required']">Phone number is required</div>
+      <div *ngIf="f['phone'].errors?.['pattern']">Only digits allowed</div>
+      <div *ngIf="f['phone'].errors?.['minlength']">Phone number too short</div>
+    </div>
+
+    <!-- PASSWORD -->
+    <label>Password</label>
+    <input type="password" formControlName="password" placeholder="••••••" />
+    <div class="error" *ngIf="submitted && f['password'].invalid">
+      <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+      <div *ngIf="f['password'].errors?.['minlength']">Min 6 characters</div>
+    </div>
+
+    <!-- CONFIRM PASSWORD -->
+    <label>Confirm Password</label>
+    <input type="password" formControlName="confirmPassword" placeholder="••••••" />
+    <div class="error" *ngIf="submitted && form.errors?.['mismatch']">
+      Passwords do not match
+    </div>
+
+    <!-- SERVER ERROR -->
+    <div class="server-error" *ngIf="serverError">{{ serverError }}</div>
+
+    <!-- REGISTER -->
+    <button
+      type="submit"
+      class="btn-primary"
+      [disabled]="loading || !emailVerified">
+      {{ loading ? 'Creating account…' : 'Register' }}
+    </button>
+
+    <button type="button" class="cancel-btn" routerLink="/" >
+        Cancel
+     </button>
+
+    <p class="switch">
+      Already have an account? <a routerLink="/login">Login</a>
+    </p>
+
+  </form>
+</div>
+</div>

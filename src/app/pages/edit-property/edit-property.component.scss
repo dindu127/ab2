@@ -1,0 +1,352 @@
+/* =====================================================
+   PAGE BACKGROUND
+===================================================== */
+
+.page-wrap {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fbff, #eef3ff);
+  padding: 40px 16px;
+}
+
+/* =====================================================
+   FORM CARD
+===================================================== */
+
+.property-form-card {
+  max-width: 560px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.form-section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* =====================================================
+   FORM GROUPS
+===================================================== */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+/* =====================================================
+   INPUTS & SELECTS
+===================================================== */
+
+.form-control,
+.form-select {
+  width: 95%;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 11px 14px;
+  font-size: 14px;
+  background: #ffffff;
+
+  &:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+/* =====================================================
+   ALERTS
+===================================================== */
+
+.alert-danger,
+.alert-success {
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+}
+
+/* =====================================================
+   IMAGE UPLOAD
+===================================================== */
+
+.image-upload-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.hint-text {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.btn-outline-secondary {
+  border-radius: 10px;
+  font-size: 13px;
+  padding: 8px 18px;
+
+  &:hover {
+    background: #f3f4f6;
+  }
+}
+
+/* =====================================================
+   IMAGE GRID (DRAG & DROP)
+===================================================== */
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.img-box {
+  position: relative;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  cursor: move;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+/* Remove button on image */
+
+.remove-btn {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #dc2626;
+  color: #ffffff;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-weight: 600;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #374151;
+  padding: 14px 32px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+}
+
+/* =====================================================
+   SAVING OVERLAY
+===================================================== */
+
+.saving-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: 20px;
+}
+
+.saving-box {
+  text-align: center;
+
+  p {
+    font-size: 14px;
+    color: #374151;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  .property-form-card {
+    padding: 24px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.edit-header {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.form-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1f2937;
+  min-width: 160px;
+}
+
+.form-subtitle {
+  font-size: 15px;
+  color: #6b7280;
+  max-width: 420px;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* BRAND */
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-left: 40%;
+
+  .logo {
+    font-size: 2.1rem;
+  }
+
+  .land {
+    color: #2563eb;
+  }
+
+  .portal {
+    color: #16a34a;
+  }
+}
+  .logo {
+    height: 100px;
+    width: 200px;
+  }
+  
+  .form-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.title-strong {
+  color: #16a34a;           /* green */
+  font-weight: 800;
+}

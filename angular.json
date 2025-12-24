@@ -27,6 +27,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              }, 
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
               }
             ],
             "styles": [
@@ -35,18 +40,18 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "1mb",
+                    "maximumError": "2mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "8kb",
+                    "maximumError": "12kb"
+                  }
+                ],
               "outputHashing": "all"
             },
             "development": {
@@ -85,7 +90,12 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+                {
+                  "glob": "**/*",
+                  "input": "src/assets",
+                  "output": "assets"
+                }
             ],
             "styles": [
               "src/styles.scss"
@@ -94,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "9f4c77d2-48db-4a79-bc50-15518d493cbb"
   }
 }

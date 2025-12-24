@@ -1,0 +1,30 @@
+<div class="admin-unlocks">
+  <h2>User Unlocks</h2>
+  <div *ngIf="loading">Loading…</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && unlocks.length" class="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Unlocked On</th>
+        <th>Transaction</th>
+        <th>Amount</th>
+        <th>Owner</th>
+        <th>Owner Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of unlocks">
+        <td>{{ x.propertyTitle || x.propertyId }}</td>
+        <td>{{ x.unlockedOn | date:'short' }}</td>
+        <td>{{ x.transactionId || '-' }}</td>
+        <td>{{ x.amount | currency }}</td>
+        <td>{{ x.ownerName || '-' }}</td>
+        <td>{{ x.ownerPhone || '-' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && unlocks.length === 0">No unlocks found for this user.</div>
+</div>

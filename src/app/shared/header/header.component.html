@@ -1,0 +1,97 @@
+<header class="header-container">
+  <div class="header-inner">
+
+    <!-- LOGO -->
+ <div class="auth-brand" routerLink="/">
+  <div class="logo-box">
+    <img
+      src="assets/images/Logo_White.png"   alt="LandPortal Logo"  class="logo"/>
+  </div>
+</div>
+
+    <!-- HAMBURGER -->
+    <button class="hamburger" (click)="toggleMenu($event)">
+      <span class="hamburger-box">
+        <span class="hamburger-inner" [class.open]="open"></span>
+      </span>
+    </button>
+
+    <!-- NAV -->
+    <nav class="header-nav" [class.open]="open" (click)="$event.stopPropagation()">
+
+      <!-- LEFT -->
+      <ul class="nav-left">
+
+        <li><a routerLink="/" (click)="closeAll()">Home</a></li>
+
+        <!-- DASHBOARD -->
+        <li *ngIf="isLoggedIn" class="dropdown">
+          <button class="dropdown-trigger" (click)="toggleDashboard($event)">
+            Dashboard <span class="caret">▾</span>
+          </button>
+
+          <ul class="dropdown-menu" [class.open]="dashboardOpen">
+            <li><a routerLink="/dashboard/my-properties" (click)="closeAll()">My Properties</a></li>
+            <li><a routerLink="/dashboard/add-property" (click)="closeAll()">Add Property</a></li>
+          </ul>
+        </li>
+
+        <!-- ADMIN -->
+        <li *ngIf="isAdmin" class="dropdown">
+          <button class="dropdown-trigger" (click)="toggleAdmin($event)">
+            Admin Panel <span class="caret">▾</span>
+          </button>
+
+          <ul class="dropdown-menu" [class.open]="adminOpen">
+            <li><a routerLink="/admin/users" (click)="closeAll()">Users</a></li>
+            <li><a routerLink="/admin/properties" (click)="closeAll()">Properties</a></li>
+            <li><a routerLink="/admin/unlock-logs" (click)="closeAll()">Unlock Logs</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+      <!-- RIGHT -->
+      <ul class="nav-right">
+
+        <!-- LOGGED IN -->
+        <ng-container *ngIf="isLoggedIn; else guest">
+
+          <img
+            class="header-avatar"
+            [src]="user?.profilePhotoUrl || 'assets/images/avatar-placeholder.png'"
+            (error)="onAvatarError($event)"
+            (click)="goToProfile()"
+          />
+
+          <li class="dropdown">
+            <button class="dropdown-trigger" (click)="toggleUserMenu($event)">
+              {{ userName }} <span class="caret">▾</span>
+            </button>
+
+            <ul class="dropdown-menu" [class.open]="userMenuOpen">
+              <li><a routerLink="/profile/info" (click)="closeAll()">Profile Info</a></li>
+              <li><a routerLink="/profile/edit" (click)="closeAll()">Edit Profile</a></li>
+              <li><a routerLink="/profile/change-password" (click)="closeAll()">Change Password</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <button class="logout-link" (click)="logout()">Logout</button>
+          </li>
+
+        </ng-container>
+
+        <!-- GUEST -->
+        <ng-template #guest>
+          <li><a routerLink="/auth/login" (click)="closeAll()">Login</a></li>
+          <li><a routerLink="/auth/register" class="register-btn" (click)="closeAll()">Register</a></li>
+        </ng-template>
+
+      </ul>
+    </nav>
+  </div>
+
+  <!-- BACKDROP -->
+  <div *ngIf="open" class="nav-backdrop" (click)="closeAll()"></div>
+</header>

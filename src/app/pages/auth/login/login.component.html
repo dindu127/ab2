@@ -1,0 +1,58 @@
+<div class="auth-page">
+
+  <!-- LOGO + NAME (CENTERED) -->
+  <div class="auth-brand" routerLink="/">
+    <img src="assets/images/Logo_White.png" alt="LandPortal Logo" class="logo"/>
+  </div>
+
+  <!-- CARD -->
+  <div class="auth-card">
+    <h2  class="title-strong">Welcome Back</h2>
+    <p class="subtitle">Login to manage your properties</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <label>Email or Phone</label>
+      <input
+        formControlName="emailOrPhone"
+        placeholder="email or phone"
+      />
+      <div class="error" *ngIf="submitted && f['emailOrPhone'].invalid">
+        Email or phone is required
+      </div>
+
+      <label>Password</label>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="••••••"
+      />
+      <div class="error" *ngIf="submitted && f['password'].invalid">
+        Password is required (min 6 chars)
+      </div>
+
+      <div class="links">
+        <a routerLink="/profile/forgot-password">Forgot password?</a>
+        <a routerLink="/auth/register">New User</a>
+      </div>
+
+       <div class="error server" *ngIf="error">
+        {{ error }}
+      </div>
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Logging in…' : 'Login' }}
+      </button>
+
+      <button
+        type="button"
+        class="cancel-btn"
+        routerLink="/"
+      >
+        Cancel
+      </button>
+
+    </form>
+  </div>
+
+</div>

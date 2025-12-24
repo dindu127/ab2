@@ -1,0 +1,78 @@
+﻿<div class="dashboard-root" style="padding:24px;">
+
+  <!-- DASHBOARD OVERVIEW (ONLY FOR /dashboard) -->
+  <ng-container *ngIf="router.url === '/dashboard'">
+
+    <!-- error banner -->
+    <div *ngIf="errorMessage" class="error-banner">
+      <span>{{ errorMessage }}</span>
+      <button (click)="retryAll()" class="btn-link">Retry</button>
+    </div>
+
+    <!-- header -->
+    <header class="dashboard-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="muted">Admin overview</p>
+      </div>
+
+      <div class="summary-revenue" style="text-align:right;">
+        <div class="label">Total Revenue</div>
+        <div class="revenue">
+          {{ summary?.totalRevenue ? formatRupee(summary?.totalRevenue ?? 0) : '₹0' }}
+        </div>
+      </div>
+
+      <div>
+        <button class="btn-primary" routerLink="/dashboard/add-property">
+          + Add New Property
+        </button>
+      </div>
+    </header>
+
+    <!-- KPI grid -->
+    <section class="kpi-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:36px;margin-bottom:36px;">
+      <!-- KPI cards -->
+      <!-- (keep all your KPI HTML exactly as-is) -->
+    </section>
+
+    <!-- KPI row -->
+    <section class="kpi-row" style="display:flex;gap:16px;margin-top:20px;">
+      <app-kpi-card
+        *ngFor="let k of kpis"
+        [title]="k.title"
+        [value]="k.value"
+        [sub]="k.sub ?? ''">
+      </app-kpi-card>
+    </section>
+
+    <!-- recent activities -->
+    <section class="streams" style="margin-top:32px;">
+      <div class="activity-card">
+        <h4>Recent Activity</h4>
+        <ul>
+          <li *ngFor="let a of recentActivities">{{ a }}</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- charts -->
+    <section class="chart-row" style="display:flex;gap:40px;margin-top:8px;">
+      <!-- charts HTML stays same -->
+    </section>
+
+    <!-- loading overlay -->
+    <div *ngIf="loadingSummary || loadingKpis || loadingCharts"
+         class="loading-overlay"
+         style="position:fixed;inset:0;background:rgba(255,255,255,0.7);z-index:999;">
+      Loading dashboard...
+    </div>
+
+  </ng-container>
+
+  <!-- 🔥 CHILD ROUTES RENDER HERE -->
+  <section class="dashboard-child" style="margin-top:40px;">
+    <router-outlet></router-outlet>
+  </section>
+
+</div>

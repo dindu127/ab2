@@ -1,0 +1,59 @@
+<div class="admin-unlock-logs">
+  <h2>Contact Unlock Logs</h2>
+
+  <div class="controls">
+    <div class="left">
+      <input type="text" placeholder="Search property / email / name / txn / phone" [(ngModel)]="searchTerm" />
+      <input type="date" [(ngModel)]="searchStartDate" />
+      <input type="date" [(ngModel)]="searchEndDate" />
+      <button (click)="onSearch()" [disabled]="loading">Search</button>
+      <button (click)="exportCsv()" [disabled]="!unlocks.length">Export CSV</button>
+      <button (click)="refresh()" [disabled]="loading">Refresh</button>
+    </div>
+
+    <div class="right">
+      <label>
+        Page size:
+        <select [(ngModel)]="pageSize" (change)="changePageSize(+pageSize)">
+          <option *ngFor="let s of pageSizes" [value]="s">{{ s }}</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading unlock logs…</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && filteredUnlocks.length" class="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Unlocked On</th>
+        <th>Payment / Txn</th>
+        <th>Amount</th>
+        <th>Owner</th>
+        <th>Owner Phone</th>
+        <th>Unlocked By</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of filteredUnlocks">
+        <td>{{ x.propertyTitle || x.propertyId }}</td>
+        <td>{{ x.unlockedOn || x.createdAt | date:'short' }}</td>
+        <td>{{ x.paymentId || x.transactionId || '-' }}</td>
+        <td>{{ (x.paymentAmount ?? x.amount) | currency }}</td>
+        <td>{{ x.ownerName || '-' }}</td>
+        <td>{{ x.ownerPhone || '-' }}</td>
+        <td>{{ x.unlockedByUserName || x.unlockedByUserEmail || x.unlockedByUserId || '-' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && filteredUnlocks.length === 0" class="empty">No records found.</div>
+
+  <div class="pager" *ngIf="!searchTerm && total > pageSize">
+    <button (click)="prevPage()" [disabled]="page <= 1">Prev</button>
+    <span>Page {{ page }} &nbsp; | &nbsp; Showing {{ unlocks.length }} of {{ total }}</span>
+    <button (click)="nextPage()" [disabled]="(page * pageSize) >= total">Next</button>
+  </div>
+</div>

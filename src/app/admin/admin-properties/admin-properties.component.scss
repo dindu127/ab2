@@ -1,0 +1,42 @@
+.admin-properties {
+  h2 { margin-bottom: 12px; }
+
+  .controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+
+    label { display: flex; gap: 8px; align-items: center; font-weight: 500; }
+    select { padding: 6px 8px; border-radius: 6px; border: 1px solid #e6e6e6; }
+  }
+
+  .loading { margin: 12px 0; color: #333; }
+  .error { color: #b00020; margin: 8px 0; }
+  .empty { margin: 12px 0; color: #666; }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+
+    th, td {
+      padding: 8px 10px;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+    }
+
+    th { background: #fafafa; }
+  }
+
+  .pager {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    button { padding: 6px 10px; cursor: pointer; }
+  }
+
+  button[disabled] { opacity: 0.6; cursor: not-allowed; }
+}

@@ -1,0 +1,47 @@
+steps:
+  # Step 0: Install dependencies (use Node 20)
+  - name: node:20
+    entrypoint: npm
+    args: ["install", "--legacy-peer-deps"]
+
+  # Step 1: Build Angular project (Node 20)
+  - name: node:20
+    entrypoint: npm
+    args: ["run", "build"]
+
+  # Step 2: Build Docker image
+  - name: gcr.io/cloud-builders/docker
+    args:
+      [
+        "build",
+        "-t",
+        "asia-south1-docker.pkg.dev/land-portal-478007/landportal-repo/landportal-frontend:latest",
+        "."
+      ]
+
+  # Step 3: Push image to Artifact Registry
+  - name: gcr.io/cloud-builders/docker
+    args:
+      [
+        "push",
+        "asia-south1-docker.pkg.dev/land-portal-478007/landportal-repo/landportal-frontend:latest"
+      ]
+
+  # Step 4: Deploy to Cloud Run
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      [
+        "run",
+        "deploy",
+        "landportal-frontend",
+        "--image",
+        "asia-south1-docker.pkg.dev/land-portal-478007/landportal-repo/landportal-frontend:latest",
+        "--region",
+        "asia-south1",
+        "--platform",
+        "managed",
+        "--allow-unauthenticated"
+      ]
+
+images:
+  - "asia-south1-docker.pkg.dev/land-portal-478007/landportal-repo/landportal-frontend:latest"

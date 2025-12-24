@@ -1,0 +1,67 @@
+<div class="page-wrap profile-page">
+  <div class="property-form-card">
+
+    <!-- HEADER -->
+    <div class="form-header">
+      <h2 class="title-strong">Profile Information</h2>
+      <p class="form-subtitle">
+        View your personal details and account information.
+      </p>
+    </div>
+
+    <!-- PROFILE PHOTO -->
+    <div class="profile-photo-section">
+      <img
+        [src]="user?.profilePhotoUrl || 'assets/images/avatar-placeholder.png'"
+        alt="Profile Photo"
+        class="profile-avatar-view"
+      />
+    </div>
+
+    <!-- PROFILE DETAILS -->
+    <div class="form-section" *ngIf="user">
+      <h4 class="section-title">Personal Details</h4>
+
+      <div class="profile-row">
+        <label>Full Name</label>
+        <div class="profile-value">{{ user.fullName }}</div>
+      </div>
+
+      <div class="profile-row">
+        <label>Email Address</label>
+        <div class="profile-value">{{ user.email }}</div>
+      </div>
+
+      <div class="profile-row">
+        <label>Phone Number</label>
+        <div class="profile-value">
+          {{ user.phone || 'Not added' }}
+        </div>
+      </div>
+
+      <div class="profile-row">
+        <label>Role</label>
+        <div class="profile-value badge-role">
+          {{ user.role }}
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="form-actions">
+      <button
+        type="button"
+        class="btn-primary"
+        (click)="goEdit()">
+        Edit Profile
+      </button>
+      
+     <button
+      type="button"
+      class="btn-secondary"
+      routerLink="/">
+      ❌ Cancel
+     </button>
+    </div>
+  </div>
+</div>

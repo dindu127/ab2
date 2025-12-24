@@ -1,0 +1,50 @@
+<div class="admin-unlock-logs">
+  <h2>Contact Unlock Logs</h2>
+
+  <div class="controls">
+    <input placeholder="Search property / email / name" [(ngModel)]="search" (keyup.enter)="onSearch()" />
+    <input type="date" [(ngModel)]="from" />
+    <input type="date" [(ngModel)]="to" />
+    <button (click)="onSearch()">Search</button>
+    <button (click)="exportCsv()">Export CSV</button>
+  </div>
+
+  <div *ngIf="loading">Loading…</div>
+
+  <table *ngIf="!loading && items.length">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Unlocked By</th>
+        <th>Email</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Status</th>
+        <th>Notes</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of items">
+        <td>{{ x.propertyTitle }}</td>
+        <td>{{ x.unlockedByUserName }}</td>
+        <td>{{ x.unlockedByUserEmail }}</td>
+        <td>{{ x.paymentAmount }}</td>
+        <td>{{ x.currency }}</td>
+        <td>{{ x.paymentStatus }}</td>
+        <td>{{ x.notes || '' }}</td> <!-- use typed property instead of x['notes'] -->
+        <td>{{ x.createdAt | date:'medium' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && (!items || items.length === 0)">
+    No records found.
+  </div>
+
+  <div class="pager" *ngIf="total > pageSize">
+    <button (click)="prevPage()" [disabled]="page <= 1">Previous</button>
+    <span>Page {{ page }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page >= totalPages">Next</button>
+  </div>
+</div>

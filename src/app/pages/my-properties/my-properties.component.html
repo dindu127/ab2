@@ -1,0 +1,71 @@
+<div class="home-page">
+
+  <div class="section-header">
+   <h1 class="page-title">
+    <span class="title-light">My</span>
+    <span class="title-strong">Properties</span>
+  </h1>
+    <p class="subtitle">Your properties, all in one place</p>
+
+    <button class="add-btn" routerLink="/dashboard/add-property">
+      + Add Property
+    </button>
+  </div>
+
+ <div class="controls-bar">
+
+  <!-- SORT -->
+  <div class="sort">
+    <label>Sort by</label>
+    <select [(ngModel)]="sortBy" (change)="applySort()">
+      <option value="newest">Newest first</option>
+      <option value="oldest">Oldest first</option>
+      <option value="priceHigh">Price: High → Low</option>
+      <option value="priceLow">Price: Low → High</option>
+    </select>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button
+      class="filter-chip"
+      [class.active]="filter === 'featured'"
+      (click)="setFilter('featured')">
+      ⭐ Featured
+    </button>
+
+    <button
+      class="filter-chip"
+      [class.active]="filter === 'active'"
+      (click)="setFilter('active')">
+      Active
+    </button>
+
+    <button
+      class="filter-chip"
+      [class.active]="filter === 'sold'"
+      (click)="setFilter('sold')">
+      Sold
+    </button>
+
+    <button
+      *ngIf="filter"
+      class="clear-filter"
+      (click)="clearFilter()">
+      Clear
+    </button>
+  </div>
+
+</div>
+
+  <section class="property-section">
+    <app-property-grid
+      [properties]="properties"
+      [loading]="loading"
+      [showFeatured]="true"
+      [showEdit]="true"
+      [isAdmin]="false">
+    </app-property-grid>
+  </section>
+
+</div>

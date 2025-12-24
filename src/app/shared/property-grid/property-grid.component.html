@@ -1,0 +1,94 @@
+<div *ngIf="loading" class="status">Loading properties…</div>
+
+<div class="status" *ngIf="!loading && properties.length === 0">
+  You haven’t added any properties yet.
+</div>
+
+<div class="status" *ngIf="loading">
+  Loading your properties…
+</div>
+
+<div class="card-grid" *ngIf="properties.length">
+
+  <article
+    class="property-card"
+    *ngFor="let p of properties"
+    [class.sold]="p.isSold"
+    (click)="viewDetails(p)"
+  >
+
+    <!-- IMAGE -->
+    <div class="card-image">
+
+      <!-- SOLD OVERLAY -->
+      <div class="sold-overlay" *ngIf="p.isSold">
+        <img src="assets/images/sold-out.png" alt="Sold out" />
+      </div>
+
+      <img
+        class="property-image"
+        [src]="getImage(p)"
+        (error)="onImgError($event)"
+        alt="property"
+      />
+    </div>
+
+    <!-- BODY -->
+    <div class="card-body">
+      <h3>{{ p.title }}</h3>
+      <p class="subtitle">{{ p.city }}, {{ p.locality }}</p>
+
+      <div class="meta">
+        <div class="price">₹{{ p.price | number:'1.0-0' }}</div>
+        <div class="size">{{ p.sizeText }}</div>
+      </div>
+
+      <!-- FEATURED BADGE -->
+      <span *ngIf="p.isFeatured && showFeatured" class="badge">
+        ⭐ FEATURED
+      </span>
+    </div>
+
+    <!-- 🔥 EDIT BUTTON (SAFE RULE) -->
+    <div >
+      <!-- Edit -->
+      <button
+        class="edit-btn"
+        *ngIf="showEdit"
+        (click)="editProperty(p, $event)">
+        ✏️ Edit
+      </button>
+      <!-- ADMIN ACTIONS -->
+        <div class="admin-actions" *ngIf="isAdmin">
+
+          <!-- APPROVE -->
+          <button
+            *ngIf="p.status === 'Pending' || p.status === 'Rejected'"
+            class="btn approve"
+            (click)="approve.emit(p.id); $event.stopPropagation()">
+            Approve
+          </button>
+
+          <!-- REJECT -->
+          <button
+            *ngIf="p.status === 'Pending'"
+            class="btn reject"
+            (click)="reject.emit(p.id); $event.stopPropagation()">
+            Reject
+          </button>
+
+          <!-- FEATURE TOGGLE -->
+          <button
+            *ngIf="p.status === 'Approved'"
+            class="btn feature"
+            (click)="toggleFeature.emit(p); $event.stopPropagation()">
+
+            <span *ngIf="p.isFeatured">⭐ Unfeature</span>
+            <span *ngIf="!p.isFeatured">☆ Feature</span>
+
+          </button>
+
+        </div>
+    </div>
+  </article>
+</div>

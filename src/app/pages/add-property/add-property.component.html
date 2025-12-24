@@ -1,0 +1,230 @@
+<div class="page-wrap">
+    <div class="auth-brand" routerLink="/">
+    <img src="assets/images/Logo_White.png" alt="LandPortal Logo" class="logo"/>
+  </div>
+  <div class="property-form-card">
+
+    <!-- HEADER -->
+    <h2 class="title-strong ">Add New Property</h2>
+    <p class="form-subtitle">
+      Enter property details carefully. Fields marked * are mandatory.
+    </p>
+
+    <!-- TOP ERROR BANNER -->
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+      <!-- BASIC DETAILS -->
+      <div class="form-section">
+        <h4 class="section-title">Basic Details</h4>
+
+        <!-- Title -->
+        <div class="form-group">
+          <label>Title *</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            placeholder="Ex: Farm Land at ECR"
+          />
+          <div class="error-text"
+               *ngIf="f['title'].invalid && (f['title'].touched || submitted)">
+            Title is required and must be under 200 characters.
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label>Description *</label>
+          <textarea
+            rows="3"
+            class="form-control"
+            formControlName="description"
+            placeholder="Short description about the land">
+          </textarea>
+          <div class="error-text"
+               *ngIf="f['description'].invalid && (f['description'].touched || submitted)">
+            Description is required and must be under 4000 characters.
+          </div>
+        </div>
+      </div>
+
+      <!-- PRICING -->
+      <div class="form-section">
+        <h4 class="section-title">Pricing & Size</h4>
+
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>Price (₹) *</label>
+            <input type="number" class="form-control" formControlName="price" />
+            <div class="error-text"
+                 *ngIf="f['price'].invalid && (f['price'].touched || submitted)">
+              Enter a valid price.
+            </div>
+          </div>
+
+          <div class="col-md-4 form-group">
+            <label>Land Size *</label>
+            <input type="number" class="form-control" formControlName="landSize" />
+            <div class="error-text"
+                 *ngIf="f['landSize'].invalid && (f['landSize'].touched || submitted)">
+              Enter valid land size.
+            </div>
+          </div>
+
+          <div class="col-md-4 form-group">
+            <label>Size Unit *</label>
+            <select class="form-select" formControlName="sizeUnit">
+              <option [ngValue]="0">Sqft</option>
+              <option [ngValue]="1">Cent</option>
+              <option [ngValue]="2">Acre</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOCATION -->
+      <div class="form-section">
+        <h4 class="section-title">Location</h4>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label>City *</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="city"
+              placeholder="Ex: Chennai"
+            />
+            <div class="error-text"
+                 *ngIf="f['city'].invalid && (f['city'].touched || submitted)">
+              City is required.
+            </div>
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label>Locality *</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="locality"
+              placeholder="Ex: OMR"
+            />
+            <div class="error-text"
+                 *ngIf="f['locality'].invalid && (f['locality'].touched || submitted)">
+              Locality is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROPERTY DETAILS -->
+      <div class="form-section">
+        <h4 class="section-title">Property Details</h4>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label>Road Access</label>
+            <select class="form-select" formControlName="roadAccess">
+              <option value="">Select road access</option>
+              <option *ngFor="let opt of roadAccessOptions" [value]="opt">
+                {{ opt }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label>Facing</label>
+            <select class="form-select" formControlName="facing">
+              <option value="">Select facing</option>
+              <option *ngFor="let opt of facingOptions" [value]="opt">
+                {{ opt }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label>Plot Type</label>
+            <select class="form-select" formControlName="plotType">
+              <option value="">Select plot type</option>
+              <option *ngFor="let opt of plotTypeOptions" [value]="opt">
+                {{ opt }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label>Brokerage</label>
+            <select class="form-select" formControlName="brokerage">
+              <option value="">Select brokerage</option>
+              <option *ngFor="let opt of brokerageOptions" [value]="opt">
+                {{ opt }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGES -->
+      <div class="form-section">
+        <h4 class="section-title">Property Images</h4>
+
+        <div class="image-upload-bar">
+          <button type="button"
+                  class="btn btn-outline-secondary"
+                  (click)="fileInput.click()">
+            + Add Image
+          </button>
+          <span class="hint-text">
+            First image will be used as cover
+          </span>
+        </div>
+
+        <input
+          type="file"
+          #fileInput
+          class="image-upload-bar"
+          accept="image/*"
+          (change)="onSingleFileSelected($event, fileInput)"
+        />
+      </div>
+
+      <!-- IMAGE PREVIEW -->
+      <div *ngIf="previews.length" class="row image-preview">
+        <div class="col-6 col-md-3" *ngFor="let preview of previews; let i = index">
+          <div class="preview-card">
+            <img [src]="preview" />
+            <div class="preview-actions">
+              <button type="button" (click)="removeImage(i)">Remove</button>
+              <button *ngIf="i !== 0" type="button" (click)="setAsCover(i)">
+                Set Cover
+              </button>
+              <span *ngIf="i === 0" class="cover-badge">Cover</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <button type="submit"
+                class="btn-primary"
+                [disabled]="isSaving">
+          {{ isSaving ? 'Saving...' : 'Save Property' }}
+        </button>
+
+        <button type="button"
+                class="btn-secondary"
+                routerLink="/">
+          ❌ Cancel
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

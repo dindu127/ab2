@@ -1,0 +1,149 @@
+.dashboard-root {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* error banner */
+.error-banner {
+  background: #fff3f3;
+  border: 1px solid #f1c0c0;
+  color: #800;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+}
+.btn-link {
+  background: transparent;
+  border: none;
+  color: #0b5fff;
+  cursor: pointer;
+}
+
+/* header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+.muted { color: #666; }
+
+/* summary revenue */
+.summary-revenue {
+  text-align: right;
+}
+.summary-revenue .label { color: #888; }
+.summary-revenue .revenue {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* KPI grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  margin-bottom: 36px;
+}
+.kpi-card {
+  min-height: 70px;
+}
+.kpi-label { color: #777; }
+.kpi-value {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+.kpi-sub { color: #888; margin-top: 6px; }
+
+/* activity/streams */
+.streams {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+.activity-card {
+  flex: 1 1 320px;
+}
+.activity-card ul { padding-left: 20px; }
+
+/* charts */
+.chart-row {
+  display: flex;
+  gap: 40px;
+  margin-top: 8px;
+  justify-content: space-between;
+}
+.chart-card {
+  flex: 1;
+  max-width: 48%;
+}
+.canvas-wrap {
+  height: 300px; /* prevents chart from stretching page */
+  position: relative;
+}
+
+/* loading overlay */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.7);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.spinner {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 6px solid #ddd;
+  border-top-color: #1e90ff;
+  animation: spin 0.9s linear infinite;
+}
+.loading-text { margin-top: 12px; color: #333; }
+
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+/* primary button */
+.btn-primary {
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.btn-primary:hover {
+  background: #1557b0;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* responsive */
+@media (max-width: 900px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .chart-row { flex-direction: column; }
+  .chart-card { max-width: 100%; }
+}

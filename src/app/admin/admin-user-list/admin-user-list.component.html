@@ -1,0 +1,32 @@
+<div class="admin-users">
+  <h2>Users</h2>
+
+  <div *ngIf="loading" class="status">Loading users…</div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && users.length" class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+        <th>Joined</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{ u.fullName }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.phone || '-' }}</td>
+        <td>{{ u.role || '-' }}</td>
+        <td>{{ u.createdAt | date:'short' }}</td>
+        <td><button (click)="viewUnlocks(u)">View Unlocks</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && users.length === 0 && !error" class="empty">No users found.</div>
+</div>

@@ -1,0 +1,38 @@
+<div class="admin-properties">
+  <h2>Properties (Admin)</h2>
+
+  <!-- Filters -->
+  <div class="controls">
+    <label>
+      Status:
+      <select [(ngModel)]="status" (change)="changeStatus(status)">
+        <option>Pending</option>
+        <option>Approved</option>
+        <option>Rejected</option>
+      </select>
+    </label>
+
+    <label>
+      Page size:
+      <select [(ngModel)]="pageSize" (change)="changePageSize(pageSize)">
+        <option *ngFor="let s of pageSizes" [value]="s">
+          {{ s }}
+        </option>
+      </select>
+    </label>
+  </div>
+
+  <!-- ✅ SINGLE SOURCE OF UI -->
+    <app-property-grid
+      [properties]="properties"
+      [loading]="loading"
+      [showFeatured]="true"
+      [isAdmin]="true"
+      [showEdit]="true"
+      (approve)="approve($event)"
+      (reject)="reject($event)"
+      (toggleFeature)="toggleFeatured($event)">
+    </app-property-grid>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+</div>

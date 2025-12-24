@@ -1,0 +1,52 @@
+/* src/app/admin/admin-unlock-logs/admin-unlock-logs.component.scss */
+.admin-unlock-logs {
+  h2 { margin-bottom: 12px; }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+    align-items: center;
+
+    .left { display: flex; gap: 8px; align-items: center; }
+    .right { display: flex; gap: 8px; align-items: center; }
+
+    input[type="text"], input[type="date"] {
+      padding: 6px 8px;
+      min-width: 220px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    select { padding: 6px 8px; }
+    button { padding: 6px 10px; cursor: pointer; }
+  }
+
+  .loading { margin: 12px 0; color: #333; }
+  .error { color: #b00020; margin: 8px 0; }
+  .empty { margin: 12px 0; color: #666; }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+
+    th, td {
+      padding: 8px 10px;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+    }
+
+    th { background: #fafafa; }
+  }
+
+  .pager {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    button { padding: 6px 10px; cursor: pointer; }
+  }
+}

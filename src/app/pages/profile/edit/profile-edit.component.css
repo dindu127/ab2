@@ -1,0 +1,199 @@
+/* =====================================================
+   PAGE WRAPPER
+===================================================== */
+
+.page-wrap.profile-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fbff, #eef3ff);
+  padding: 40px 16px;
+}
+
+/* =====================================================
+   CARD (SAME AS ADD / EDIT PROPERTY)
+===================================================== */
+
+.property-form-card {
+  max-width: 560px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.form-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 28px;
+}
+
+/* =====================================================
+   PROFILE PHOTO
+===================================================== */
+
+.profile-photo-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.form-section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* =====================================================
+   FORM GROUPS
+===================================================== */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.form-control {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 11px 14px;
+  font-size: 14px;
+  background: #ffffff;
+
+  &:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+
+  &:disabled {
+    background: #f3f4f6;
+    color: #6b7280;
+    cursor: not-allowed;
+  }
+}
+
+/* =====================================================
+   HINT / STATUS
+===================================================== */
+
+.hint-text {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.status-message {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #16a34a;
+  text-align: center;
+}
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-weight: 600;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #374151;
+  padding: 14px 32px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  .property-form-card {
+    padding: 24px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.title-strong {
+  color: #16a34a;           /* green */
+  font-weight: 800;
+}

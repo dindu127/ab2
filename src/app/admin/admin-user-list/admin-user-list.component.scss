@@ -1,0 +1,9 @@
+.admin-users {
+  h2 { margin-bottom: 12px; }
+  .table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .table th, .table td { padding: 8px 10px; border: 1px solid #e0e0e0; text-align: left; }
+  .error { color: #b00020; margin: 8px 0; }
+  .status { color: #444; margin: 8px 0; }
+  .empty { color: #555; margin: 8px 0; }
+  button { padding: 6px 10px; cursor: pointer; border-radius: 6px; border: 1px solid #d0d0d0; background: white; }
+}

@@ -1,0 +1,156 @@
+/* PAGE */
+.auth-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fbff, #eef3ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 48px;
+}
+
+/* BRAND */
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 800;
+
+  .logo {
+    font-size: 2.1rem;
+  }
+
+  .land {
+    color: #2563eb;
+  }
+
+  .portal {
+    color: #16a34a;
+  }
+}
+
+/* CARD */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  padding: 2.4rem;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+/* TEXT */
+h2 {
+  margin-bottom: 6px;
+  font-size: 1.6rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 1.8rem;
+}
+
+/* FORM */
+label {
+  display: block;
+  margin-top: 1.1rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.4rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+
+  &:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+}
+
+/* LINKS */
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.9rem;
+
+  a {
+    font-size: 0.85rem;
+    color: #2563eb;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* BUTTONS */
+button {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button[type='submit'] {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+
+  &:disabled {
+    opacity: 0.7;
+  }
+}
+
+.cancel-btn {
+  margin-top: 0.9rem;
+  background: #f1f5f9;
+  color: #374151;
+
+  &:hover {
+    background: #e13838;
+    color: #eef3ff;
+  }
+}
+
+/* ERRORS */
+.error {
+  color: #b00020;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+.server {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .auth-page {
+    padding-top: 32px;
+  }
+
+  .auth-card {
+    margin: 0 16px;
+  }
+}
+
+.logo {
+  height: 100px;
+  width: 200px;
+}
+
+.title-strong {
+  color: #16a34a;     /* green */
+  font-weight: 800;
+}

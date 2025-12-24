@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.app-container {
+  padding: 1.5rem;
+  min-height: calc(100vh - 120px);
+}
+
+/* Global form controls font */
+input,
+select {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

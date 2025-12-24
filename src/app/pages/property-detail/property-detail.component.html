@@ -1,0 +1,205 @@
+<ng-container *ngIf="property; else noProperty">
+  <div class="detail-page">
+    <button type="button" class="back-link" (click)="goBack()">← Back</button>
+
+    <section class="content">
+      <!-- LEFT SIDE -->
+      <div class="left">
+        <!-- Title + status -->
+        <div class="title-row">
+          <h1>{{ property.title }}</h1>
+
+          <span *ngIf="property.status" class="status-pill" [ngClass]="property.status!.toLowerCase()">
+            {{ property.status }}
+          </span>
+
+          <span *ngIf="property.premium" class="premium-pill">Premium</span>
+
+          <!-- Unlocked badge (existing) -->
+          <span *ngIf="showOwnerContact" class="unlocked-badge">Unlocked ✔</span>
+
+          <!-- SOLD badge -->
+          <span *ngIf="property.isSold" class="sold-pill">
+            SOLD<span *ngIf="property.soldAt"> on {{ property.soldAt | date:'mediumDate' }}</span>
+          </span>
+
+          <!-- Owner/Admin action buttons -->
+          <button
+            *ngIf="!property.isSold && (isOwner || isAdmin)"
+            class="mark-sold-btn"
+            type="button"
+            (click)="markAsSold()"
+            [disabled]="isProcessing">
+            Mark as Sold
+          </button>
+
+          <button
+            *ngIf="property.isSold && (isOwner || isAdmin)"
+            class="mark-available-btn"
+            type="button"
+            (click)="markAsAvailable()"
+            [disabled]="isProcessing">
+            Mark as Available
+          </button>
+        </div>
+
+        <!-- META ROW -->
+        <div class="meta-row">
+          <div class="meta-block">
+            <div class="meta-label">Location</div>
+            <div class="meta-value">{{ property.location }}</div>
+          </div>
+
+          <div class="meta-block">
+            <div class="meta-label">Price</div>
+            <div class="meta-value">{{ fmtPrice(property.price) }}</div>
+            <div class="posted-on" *ngIf="property.listedOn">Posted on {{ property.listedOn }}</div>
+          </div>
+
+          <div class="meta-block">
+            <div class="meta-label">Land Size</div>
+            <div class="meta-value">{{ property.size }}</div>
+          </div>
+        </div>
+
+        <!-- IMAGE SLIDER -->
+        <div class="image-slider" *ngIf="property.images && property.images.length">
+          <button class="nav prev" type="button" (click)="prevImage()" [disabled]="property.images.length <= 1">‹</button>
+
+          <div class="image-box" (click)="openFullscreen(selectedImageUrl)">
+            <img [src]="selectedImageUrl" alt="Property image" />
+          </div>
+
+          <button class="nav next" type="button" (click)="nextImage()" [disabled]="property.images.length <= 1">›</button>
+
+          <div class="dots" *ngIf="property.images.length > 1">
+            <span *ngFor="let img of property.images; let i = index" [class.active]="i === currentIndex" (click)="goToImage(i)"></span>
+          </div>
+        </div>
+
+        <!-- OVERVIEW -->
+        <section class="overview">
+          <h2>Overview</h2>
+
+          <p class="overview-title">{{ property.title }}</p>
+
+          <p class="property-description" *ngIf="property.description">{{ property.description }}</p>
+
+          <ul class="overview-list">
+            <li>
+              <span class="label">📍 Location</span>
+              <span class="value">{{ property.location }}</span>
+            </li>
+
+            <li>
+              <span class="label">📐 Land Size</span>
+              <span class="value">{{ property.size }}</span>
+            </li>
+
+            <li *ngIf="property.roadAccess">
+              <span class="label">🛣 Road Access</span>
+              <span class="value">{{ property.roadAccess }}</span>
+            </li>
+
+            <li *ngIf="property.facing">
+              <span class="label">🧭 Facing</span>
+              <span class="value">{{ property.facing }}</span>
+            </li>
+
+            <li *ngIf="property.plotType">
+              <span class="label">🏷 Plot Type</span>
+              <span class="value">{{ property.plotType }}</span>
+            </li>
+
+            <li *ngIf="property.brokerage">
+              <span class="label">💼 Brokerage</span>
+              <span class="value">{{ property.brokerage }}</span>
+            </li>
+
+            <li *ngIf="property.status">
+              <span class="label">✅ Status</span>
+              <span class="value status-chip" [ngClass]="property.status!.toLowerCase()">{{ property.status }}</span>
+            </li>
+
+            <li *ngIf="property.listedOn">
+              <span class="label">🗓 Posted on</span>
+              <span class="value">{{ property.listedOn }}</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- RIGHT SIDE / CONTACT CARD -->
+      <aside class="right">
+        <div class="side-card">
+          <h3>Interested in this land?</h3>
+          <p class="side-text">Choose how you want to contact.</p>
+
+          <div class="contact-buttons" role="tablist" aria-label="Contact options">
+            <button class="btn-primary" (click)="onFreeContactClick()" type="button" role="tab" [attr.aria-selected]="showFreeContact">
+              Free Contact
+            </button>
+
+            <button class="btn-outline" type="button" role="tab" [attr.aria-selected]="showPremiumPrompt || showOwnerContact">
+              Premium Contact <span class="lock">🔒</span>
+            </button> 
+
+            <!-- <button  class="btn premium-btn"  disabled  title="Premium contact will be available soon"> 
+               🔒 Premium Contact (Coming Soon)
+             </button> -->
+          </div>
+
+          <!-- Free contact box (your app/support contact) -->
+          <div class="contact-box" *ngIf="showFreeContact">
+            <h4>Contact Details</h4>
+            <p><strong>Phone:</strong> +91 98765 43210</p>
+            <p><strong>WhatsApp:</strong> +91 98765 43210</p>
+            <p><strong>Email:</strong> support@landportal.app</p>
+          </div>
+
+          <!-- Premium locked prompt (show price + unlock button) -->
+          <!-- <div class="premium-box" *ngIf="showPremiumPrompt">
+            <h4>Unlock Owner Contact</h4>
+            <p>Price: <strong>{{ unlockInfo?.currency }} {{ unlockInfo?.price }}</strong></p>
+            <button class="btn-primary" [disabled]="isUnlocking" >
+              {{ isUnlocking ? 'Unlocking...' : 'Unlock & View Contact' }}
+            </button>
+          </div>  -->
+          <!-- Owner contact after successful fetch/unlock (click)="onUpgradeToPremium()"-->
+          <div class="contact-box owner-contact" *ngIf="showOwnerContact && ownerContact">
+            <h4>Owner Contact</h4>
+            <p><strong>{{ ownerContact.ownerName }}</strong></p>
+            <p><strong>Phone:</strong> {{ ownerContact.phone }}</p>
+            <p><strong>Email:</strong> {{ ownerContact.email }}</p>
+            <p><strong>WhatsApp:</strong> {{ ownerContact.whatsapp || ownerContact.phone }}</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </div>
+</ng-container>
+
+<ng-template #noProperty>
+  <div class="detail-page empty">
+    <div class="app-toast" *ngIf="toastService.message$ | async as toastMsg">
+      {{ toastMsg }}
+    </div>
+    <p>Property could not be loaded.</p>
+    <button class="btn-primary" type="button" (click)="goBack()">Back to Home</button>
+  </div>
+</ng-template>
+
+<div
+  class="fullscreen-overlay"
+  *ngIf="isFullscreen"
+  (click)="closeFullscreen()"
+>
+  <button class="fullscreen-close" (click)="closeFullscreen()">✕</button>
+
+  <img
+    [src]="fullscreenImage"
+    class="fullscreen-image"
+    (click)="$event.stopPropagation()"
+  />
+</div>
+
