@@ -170,102 +170,124 @@ export class AddPropertyComponent {
   }
 
   async onSubmit() {
-    this.submitted = true;
-    this.error = null;
+  this.submitted = true;
+  this.error = null;
 
-    if (this.form.invalid || this.isSaving) {
-      this.form.markAllAsTouched();
-      return;
+  if (this.form.invalid || this.isSaving) {
+    this.form.markAllAsTouched();
+    return;
+  }
+
+  this.isSaving = true;
+
+  try {
+    // 🔐 0️⃣ Get JWT token
+    const token = localStorage.getItem('lp_token');
+    if (!token) {
+      throw new Error('User not logged in');
     }
 
-    this.isSaving = true;
+    const authHeaders = {
+      Authorization: `Bearer ${token}`
+    };
 
-    try {
-      // 1️⃣ Create property
-      const raw = this.form.value;
+    // 1️⃣ Create property
+    const raw = this.form.value;
 
-      const payload: any = {
-        title: raw.title,
-        description: raw.description,
-        price: raw.price,
-        landSize: raw.landSize,
-        sizeUnit: raw.sizeUnit,
-        city: raw.city,
-        locality: raw.locality,
-        roadAccess: raw.roadAccess || null,
-        facing: raw.facing || null,
-        plotType: raw.plotType || null,
-        brokerage: raw.brokerage || null
+    const payload: any = {
+      title: raw.title,
+      description: raw.description,
+      price: raw.price,
+      landSize: raw.landSize,
+      sizeUnit: raw.sizeUnit,
+      city: raw.city,
+      locality: raw.locality,
+      roadAccess: raw.roadAccess || null,
+      facing: raw.facing || null,
+      plotType: raw.plotType || null,
+      brokerage: raw.brokerage || null
+    };
+
+    console.log('Create property payload:', payload);
+    console.log('POST URL =>', `${this.apiBaseUrl}/api/properties`);
+
+    const property: any = await this.http
+      .post(
+        `${this.apiBaseUrl}/properties`,
+        payload,
+        { headers: authHeaders } // ✅ IMPORTANT
+      )
+      .toPromise();
+
+    const propertyId = property.id ?? property.propertyId;
+    if (!propertyId) {
+      throw new Error('Property ID not returned from API');
+    }
+
+    // 2️⃣ Upload images
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      const file = this.selectedFiles[i];
+
+      // 2a. SIGN
+      const signBody = {
+        fileName: file.name,
+        contentType: file.type
       };
 
-      console.log('Create property payload:', payload);
-
-      const property: any = await this.http
-        .post(`${this.apiBaseUrl}/api/properties`, payload)
+      const signRes: any = await this.http
+        .post(
+          `${this.apiBaseUrl}/properties/${propertyId}/images/sign`,
+          signBody,
+          { headers: authHeaders } // ✅ IMPORTANT
+        )
         .toPromise();
 
-      const propertyId = property.id ?? property.propertyId;
-      if (!propertyId) {
-        throw new Error('Property ID not returned from API');
+      const uploadUrl =
+        signRes?.uploadUrl ?? signRes?.signedUrl ?? signRes?.url;
+      const publicUrl =
+        signRes?.publicUrl ?? signRes?.url ?? signRes?.fileUrl;
+
+      if (!uploadUrl || !publicUrl) {
+        console.error('Unexpected sign response:', signRes);
+        throw new Error('Sign API did not return expected URLs');
       }
 
-      // 2️⃣ Upload images one by one
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        const file = this.selectedFiles[i];
+      // 2b. Upload to GCS (NO AUTH HEADER HERE)
+      await this.http
+        .put(uploadUrl, file, {
+          headers: { 'Content-Type': file.type }
+        })
+        .toPromise();
 
-        // 2a. SIGN
-        const signBody = {
-          fileName: file.name,
-          contentType: file.type
-        };
+      // 2c. Commit metadata
+      const commitBody = {
+        url: publicUrl,
+        contentType: file.type,
+        sizeBytes: file.size,
+        width: 0,
+        height: 0,
+        isCover: i === 0
+      };
 
-        const signRes: any = await this.http
-          .post(
-            `${this.apiBaseUrl}/api/properties/${propertyId}/images/sign`,
-            signBody
-          )
-          .toPromise();
-
-        const uploadUrl =
-          signRes?.uploadUrl ?? signRes?.signedUrl ?? signRes?.url;
-        const publicUrl =
-          signRes?.publicUrl ?? signRes?.url ?? signRes?.fileUrl;
-
-        if (!uploadUrl || !publicUrl) {
-          console.error('Unexpected sign response:', signRes);
-          throw new Error('Sign API did not return expected URLs');
-        }
-
-        // 2b. upload to signed URL
-        await this.http
-          .put(uploadUrl, file, {
-            headers: { 'Content-Type': file.type }
-          })
-          .toPromise();
-
-        // 2c. commit metadata
-        const commitBody = {
-          url: publicUrl,
-          contentType: file.type,
-          sizeBytes: file.size,
-          width: 0,
-          height: 0,
-          isCover: i === 0
-        };
-
-        await this.http
-          .post(
-            `${this.apiBaseUrl}/api/properties/${propertyId}/images/commit`,
-            commitBody
-          )
-          .toPromise();
-      }
-
-      this.router.navigate(['/dashboard']);
-    } catch (err: any) {
-      this.error = this.extractErrorMessage(err);
-    } finally {
-      this.isSaving = false;
+      await this.http
+        .post(
+          `${this.apiBaseUrl}/properties/${propertyId}/images/commit`,
+          commitBody,
+          { headers: authHeaders } // ✅ IMPORTANT
+        )
+        .toPromise();
     }
+
+    // ✅ Success
+    this.router.navigate(['/dashboard']);
+
+  } catch (err: any) {
+    console.error(err);
+    this.error = this.extractErrorMessage(err);
+  } finally {
+    this.isSaving = false;
   }
+}
+
+
 }
