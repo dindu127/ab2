@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://landportal-backend-535297959730.asia-south1.run.app'
+  apiUrl: 'https://landportal-api-a5c6hdcdaagwema5.centralindia-01.azurewebsites.net/api'
 };

@@ -6,9 +6,10 @@ import {
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { lastValueFrom } from 'rxjs';
 
 interface SignImageResponse {
   uploadUrl: string;  // signed PUT URL
@@ -169,7 +170,7 @@ export class AddPropertyComponent {
     return 'Failed to save property. Please check the console for details.';
   }
 
-  async onSubmit() {
+async onSubmit() {
   this.submitted = true;
   this.error = null;
 
@@ -181,15 +182,15 @@ export class AddPropertyComponent {
   this.isSaving = true;
 
   try {
-    // 🔐 0️⃣ Get JWT token
+    // 🔐 Get JWT token
     const token = localStorage.getItem('lp_token');
-    if (!token) {
-      throw new Error('User not logged in');
-    }
+    if (!token) throw new Error('User not logged in');
 
-    const authHeaders = {
+    const authHeaders = new HttpHeaders({
       Authorization: `Bearer ${token}`
-    };
+    });
+
+
 
     // 1️⃣ Create property
     const raw = this.form.value;
@@ -208,74 +209,32 @@ export class AddPropertyComponent {
       brokerage: raw.brokerage || null
     };
 
-    console.log('Create property payload:', payload);
-    console.log('POST URL =>', `${this.apiBaseUrl}/api/properties`);
-
-    const property: any = await this.http
-      .post(
+    const property: any = await lastValueFrom(
+      this.http.post(
         `${this.apiBaseUrl}/properties`,
         payload,
-        { headers: authHeaders } // ✅ IMPORTANT
+        { headers: authHeaders }
       )
-      .toPromise();
+    );
 
-    const propertyId = property.id ?? property.propertyId;
-    if (!propertyId) {
-      throw new Error('Property ID not returned from API');
-    }
 
-    // 2️⃣ Upload images
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      const file = this.selectedFiles[i];
+    const propertyId = property?.id ?? property?.propertyId;
+    if (!propertyId) throw new Error('Property ID not returned from API');
 
-      // 2a. SIGN
-      const signBody = {
-        fileName: file.name,
-        contentType: file.type
-      };
+    // 2️⃣ Upload images (OPTIONAL)
+    if (this.selectedFiles?.length) {
+      for (const file of this.selectedFiles) {
+        const formData = new FormData();
+        formData.append('file', file);
 
-      const signRes: any = await this.http
-        .post(
-          `${this.apiBaseUrl}/properties/${propertyId}/images/sign`,
-          signBody,
-          { headers: authHeaders } // ✅ IMPORTANT
-        )
-        .toPromise();
-
-      const uploadUrl =
-        signRes?.uploadUrl ?? signRes?.signedUrl ?? signRes?.url;
-      const publicUrl =
-        signRes?.publicUrl ?? signRes?.url ?? signRes?.fileUrl;
-
-      if (!uploadUrl || !publicUrl) {
-        console.error('Unexpected sign response:', signRes);
-        throw new Error('Sign API did not return expected URLs');
+        await lastValueFrom(
+          this.http.post(
+            `${this.apiBaseUrl}/properties/${propertyId}/images/upload`,
+            formData,
+            { headers: authHeaders }
+          )
+        );
       }
-
-      // 2b. Upload to GCS (NO AUTH HEADER HERE)
-      await this.http
-        .put(uploadUrl, file, {
-          headers: { 'Content-Type': file.type }
-        })
-        .toPromise();
-
-      // 2c. Commit metadata
-      const commitBody = {
-        url: publicUrl,
-        contentType: file.type,
-        sizeBytes: file.size,
-        width: 0,
-        height: 0,
-        isCover: i === 0
-      };
-
-      await this.http
-        .post(
-          `${this.apiBaseUrl}/properties/${propertyId}/images/commit`,
-          commitBody,
-          { headers: authHeaders } // ✅ IMPORTANT
-        )
-        .toPromise();
     }
 
     // ✅ Success
@@ -288,6 +247,7 @@ export class AddPropertyComponent {
     this.isSaving = false;
   }
 }
+
 
 
 }
