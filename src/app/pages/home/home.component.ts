@@ -61,15 +61,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       sortBy: ['listedDesc']
     });
 
-    this.loadCities();
     this.loadPage(1);
 
+    setTimeout(() => { this.loadCities();  }, 0);
     // subscribe to property updates and reload page 1 when a property changes
     this.updatesSub = this.propertyUpdates.onPropertyUpdated().subscribe((propertyId) => {
       // simple behavior: reload page 1 to reflect changes
       this.loadPage(1);
     });
-  }
+  } 
 
   ngOnDestroy(): void {
     this.updatesSub?.unsubscribe();
