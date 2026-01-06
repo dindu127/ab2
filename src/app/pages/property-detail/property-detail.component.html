@@ -67,7 +67,7 @@
           <button class="nav prev" type="button" (click)="prevImage()" [disabled]="property.images.length <= 1">‹</button>
 
           <div class="image-box" (click)="openFullscreen(selectedImageUrl)">
-            <img [src]="selectedImageUrl" alt="Property image" />
+            <img [src]="selectedImageUrl" alt="Property image" loading="lazy" />
           </div>
 
           <button class="nav next" type="button" (click)="nextImage()" [disabled]="property.images.length <= 1">›</button>
