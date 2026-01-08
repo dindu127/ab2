@@ -1,0 +1,71 @@
+<article class="blog-wrapper" *ngIf="blogData">
+
+  <!-- TITLE -->
+  <h1 class="blog-title">{{ blogData.title }}</h1>
+
+  <!-- INTRO -->
+  <p class="blog-intro" *ngIf="blogData.intro">
+    {{ blogData.intro }}
+  </p>
+
+  <!-- CONTENT -->
+  <ng-container *ngFor="let section of blogData.sections">
+
+    <!-- H2 -->
+    <h2 *ngIf="section.type === 'heading'">
+      {{ section.content }}
+    </h2>
+
+    <!-- H3 -->
+    <h3 *ngIf="section.type === 'subheading'">
+      {{ section.content }}
+    </h3>
+
+    <!-- TEXT -->
+    <p *ngIf="section.type === 'text'">
+      {{ section.content }}
+    </p>
+
+    <!-- LIST -->
+    <ul *ngIf="section.type === 'list'">
+      <li *ngFor="let item of section.items">
+        {{ item }}
+      </li>
+    </ul>
+
+    <!-- NOTE / HIGHLIGHT -->
+    <div class="note" *ngIf="section.type === 'note'">
+      {{ section.content }}
+    </div>
+
+    <!-- DIVIDER -->
+    <hr *ngIf="section.type === 'divider'" />
+
+    <!-- LARGE TABLE -->
+    <div class="table-container" *ngIf="section.type === 'table'">
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let head of section.headers">
+              {{ head }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of section.rows">
+            <td *ngFor="let col of row">
+              {{ col }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="summary" *ngIf="section.type === 'summary'">
+      {{ section.content }}
+    </div>
+
+  </ng-container>
+
+</article>

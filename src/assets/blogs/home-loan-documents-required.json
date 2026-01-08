@@ -1,0 +1,138 @@
+{
+  "title": "Home Loan Documents Required",
+  "intro": "When applying for a home loan, lenders require specific documents to process and approve your application. Submitting complete and accurate documents ensures faster verification and smooth loan approval.",
+  "sections": [
+    {
+      "type": "text",
+      "content": "Without submitting the required documents, a home loan application cannot be processed. Lenders carefully verify every document before approving a loan, making it essential for applicants to understand the documentation requirements."
+    },
+    {
+      "type": "text",
+      "content": "While the document list is largely similar across lenders, it may vary slightly depending on the lender, applicant profile, and loan type. These documents usually include KYC, income proof, and property-related documents."
+    },
+    {
+      "type": "heading",
+      "content": "Basic Documents Required for Home Loan"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Completed and signed home loan application form",
+        "Latest passport size photographs"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Identity Proof (Any One Required)"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Aadhaar Card",
+        "PAN Card",
+        "Driving License",
+        "Passport",
+        "Voter ID"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Residence Proof (Any One Required)"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Electricity, water or telephone bill",
+        "Ration card",
+        "Passport",
+        "Bank statement or passbook with address",
+        "Employment letter",
+        "Voter ID"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Age Proof (Any One Required)"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Birth certificate",
+        "10th standard mark sheet",
+        "Driving license",
+        "PAN card",
+        "Aadhaar card",
+        "Passport",
+        "Bank passbook"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Income Documents"
+    },
+    {
+      "type": "subheading",
+      "content": "For Salaried Individuals"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Copy of Form 16",
+        "Latest Income Tax Returns",
+        "Recent salary slips",
+        "Salary increment letter (if applicable)"
+      ]
+    },
+    {
+      "type": "subheading",
+      "content": "For Self-Employed Individuals"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Bank account statement",
+        "Latest balance sheet and profit & loss statement",
+        "Income Tax Returns",
+        "Proof of business address",
+        "Form 16A (if applicable)",
+        "Professional qualification certificate (CA, Doctor, etc.)",
+        "Business license details"
+      ]
+    },
+    {
+      "type": "subheading",
+      "content": "For Non-Resident Indians (NRIs)"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Copy of valid passport and visa",
+        "Work permit",
+        "Overseas and NRO bank statements",
+        "Appointment letter with latest salary slips",
+        "Employee ID (if applicable)",
+        "Overseas address proof"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Property Documents Required"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Sale deed or agreement to sell",
+        "No Objection Certificate (NOC) from builder or society",
+        "Construction cost estimate",
+        "Property tax payment receipts",
+        "Land or building tax paid receipts",
+        "Advance payment receipt made to builder",
+        "Approved building plan"
+      ]
+    },
+    {
+      "type": "summary",
+      "content": "Submitting the right documents is a critical step in the home loan process. Keeping all documents ready in advance helps speed up verification and increases the chances of quick loan approval."
+    }
+  ]
+}

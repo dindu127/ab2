@@ -24,9 +24,11 @@ import { MyPropertiesComponent } from './pages/my-properties/my-properties.compo
 import { AddPropertyComponent } from './pages/add-property/add-property.component';
 import { EditPropertyComponent } from './pages/edit-property/edit-property.component';
 import { UnlockedContactsComponent } from './pages/unlocked-contacts/unlocked-contacts.component';
+import { BlogComponent } from './blogs/blog.component';
 
 export const routes: Routes = [
-
+  
+  {path: 'blog/:slug', component: BlogComponent },
   /* ---------------- HOME ---------------- */
   { path: '', component: HomeComponent, pathMatch: 'full' },
 

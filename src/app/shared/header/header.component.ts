@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   isAdmin = false;
   userName = '';
+  otherLinksOpen = false;
+
 
   constructor(
     private auth: AuthService,
@@ -48,6 +50,11 @@ export class HeaderComponent implements OnInit {
     this.adminOpen = false;
     this.userMenuOpen = false;
   }
+
+  toggleOtherLinks(event: Event) {
+  event.stopPropagation();
+  this.otherLinksOpen = !this.otherLinksOpen; }
+
 
   toggleAdmin(event: Event) {
     event.stopPropagation();
@@ -80,6 +87,7 @@ export class HeaderComponent implements OnInit {
     this.adminOpen = false;
     this.dashboardOpen = false;
     this.userMenuOpen = false;
+    this.otherLinksOpen = false;
   }
 
   @HostListener('document:click', ['$event'])
@@ -93,7 +101,7 @@ export class HeaderComponent implements OnInit {
   onEscape(): void {
     this.closeAll();
   }
-
+ 
   @HostListener('window:scroll') onScroll() {
   const header = document.querySelector('.header-container');
   if (!header) return;

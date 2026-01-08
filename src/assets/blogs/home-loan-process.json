@@ -1,0 +1,118 @@
+{
+  "title": "Home Loan Process",
+  "intro": "Getting a home loan is a simple and structured process. Understanding each step involved—from application to loan disbursal—helps ensure smooth approval and timely funding.",
+  "sections": [
+    {
+      "type": "text",
+      "content": "For your convenience, below are the common steps involved in the home loan process, starting from application submission to final loan disbursal."
+    },
+    {
+      "type": "heading",
+      "content": "Key Steps Involved in Home Loan Process"
+    },
+    {
+      "type": "subheading",
+      "content": "Step 1: Fill the Application Form and Submit It"
+    },
+    {
+      "type": "text",
+      "content": "This is the first step in the home loan process. You need to fill out the application form with complete personal, financial, and property-related details."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Name of applicant and co-applicant",
+        "Current residential address",
+        "Contact number",
+        "Income details of applicant and co-applicant",
+        "Education details",
+        "Employment details",
+        "Estimated property value",
+        "Property details"
+      ]
+    },
+    {
+      "type": "note",
+      "content": "Along with the application form, supporting documents such as identity proof, address proof, income proof, age proof, bank statements, IT returns, qualification proof and employment proof must be submitted."
+    },
+    {
+      "type": "subheading",
+      "content": "Step 2: Processing Fee Payment"
+    },
+    {
+      "type": "text",
+      "content": "After submitting the application, a one-time non-refundable processing fee must be paid. This fee is charged by banks and housing finance companies to process the loan application."
+    },
+    {
+      "type": "text",
+      "content": "The processing fee generally ranges between 0.5% and 1% of the loan amount. Some lenders may offer processing fee waivers, so it is advisable to confirm this beforehand."
+    },
+    {
+      "type": "subheading",
+      "content": "Step 3: Document Verification and Background Check"
+    },
+    {
+      "type": "text",
+      "content": "All submitted documents are verified by the lender. This stage may take a few days and could include a face-to-face interview."
+    },
+    {
+      "type": "text",
+      "content": "In addition to document verification, the lender may conduct background checks such as address verification, employment verification and contact verification."
+    },
+    {
+      "type": "subheading",
+      "content": "Step 4: Home Loan Approval"
+    },
+    {
+      "type": "text",
+      "content": "At this stage, the bank evaluates your eligibility and decides whether to approve the home loan. Accuracy and completeness of documents play a critical role in approval."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Credit score",
+        "Income level",
+        "Age of the applicant",
+        "Employment status",
+        "Existing debt obligations",
+        "Property details such as construction status and age"
+      ]
+    },
+    {
+      "type": "subheading",
+      "content": "Step 5: Home Loan Sanction Letter"
+    },
+    {
+      "type": "text",
+      "content": "Once approved, the lender issues a sanction or offer letter. This letter contains details such as loan amount, interest rate, loan tenure, repayment method, and applicable terms and conditions."
+    },
+    {
+      "type": "note",
+      "content": "It is important to read all terms and conditions carefully before signing and submitting the acceptance copy of the sanction letter."
+    },
+    {
+      "type": "subheading",
+      "content": "Step 6: Verification of the Property"
+    },
+    {
+      "type": "text",
+      "content": "Before disbursal, the bank verifies the property you intend to purchase. You must submit original property documents including title deed, NOC, and seller’s identity and address proof."
+    },
+    {
+      "type": "text",
+      "content": "The lender conducts legal checks to ensure the property is dispute-free and technical valuation to assess its fair market value, construction quality, age, location, and maintenance."
+    },
+    {
+      "type": "subheading",
+      "content": "Step 7: Loan Disbursal"
+    },
+    {
+      "type": "text",
+      "content": "After completing property verification, the bank drafts the loan agreement. Once you sign the agreement and complete all formalities, the loan amount is disbursed to your account."
+    },
+    {
+      "type": "summary",
+      "content": "Understanding the home loan process helps borrowers stay prepared at every stage. Submitting accurate documents, maintaining a good credit profile, and choosing the right lender can make the process smooth and hassle-free."
+    }
+  ]
+}

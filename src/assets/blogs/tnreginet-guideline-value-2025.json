@@ -1,0 +1,283 @@
+{
+  "title": "TNREGINET 2025: Apply Online for EC, Guideline Value in Tamil Nadu",
+  "intro": "TNREGINET is a one-stop online portal launched by the Tamil Nadu Registration Department to help citizens access guideline values, apply for encumbrance certificates, register documents, and track registration services online.",
+  "sections": [
+    {
+      "type": "text",
+      "content": "TNREGINET simplifies property-related registrations and documentation by allowing citizens to apply for services online without repeatedly visiting sub-registrar offices."
+    },
+    {
+      "type": "heading",
+      "content": "What is TNREGINET (Tamil Nadu Registration Department)?"
+    },
+    {
+      "type": "text",
+      "content": "TNREGINET, also known as the Inspector General of Registration (IGRS) portal, is an online platform introduced by the Government of Tamil Nadu to streamline registration of land, marriage, birth, death, firms, chit funds, and companies."
+    },
+    {
+      "type": "text",
+      "content": "The portal allows users to check guideline values, apply for Encumbrance Certificates (EC), calculate stamp duty, and track application status online."
+    },
+    {
+      "type": "heading",
+      "content": "Advantages of TNREGINET"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Simple and user-friendly registration process",
+        "Access services from home without visiting SRO",
+        "Promotes digitalisation using biometric and verification tools",
+        "Online appointment scheduling with sub-registrar offices",
+        "Real-time market valuation of properties",
+        "Easy application tracking and SMS alerts",
+        "Built-in reporting and accounting system"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "What is Guideline Value in Tamil Nadu?"
+    },
+    {
+      "type": "text",
+      "content": "Guideline value is the estimated minimum market value of land or property fixed by the Tamil Nadu government for registration purposes. It may differ from actual market prices."
+    },
+    {
+      "type": "text",
+      "content": "For developed residential areas, guideline values are fixed street-wise, while undeveloped lands are assessed based on survey numbers."
+    },
+    {
+      "type": "heading",
+      "content": "Importance of TNREGINET Guideline Value"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Ensures property is not registered below minimum value",
+        "Helps detect undervaluation and prevent revenue loss",
+        "Prevents land scams and corruption",
+        "Provides transparency in property pricing",
+        "Assures minimum sale value to property sellers"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "How to Calculate Guideline Value Online in Tamil Nadu"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Visit tnreginet.gov.in",
+        "Click on Guideline Value option",
+        "Select the desired guideline year",
+        "Enter property details and click Search",
+        "View guideline value street-wise or survey-wise"
+      ]
+    },
+    {
+      "type": "note",
+      "content": "TNREGINET guideline value PDFs can be downloaded directly from the portal."
+    },
+    {
+      "type": "heading",
+      "content": "How to Register on TNREGINET"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Visit tnreginet.gov.in",
+        "Click Registration → User Registration",
+        "Fill personal and login details",
+        "Verify OTP sent to mobile and email",
+        "Complete registration and login"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "How to Apply for Encumbrance Certificate (EC) on TNREGINET"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Login to TNREGINET portal",
+        "Navigate to Encumbrance Certificate section",
+        "Click Apply Online",
+        "Enter property details",
+        "Submit application"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "How to View Encumbrance Certificate Online"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Go to E-Services → View EC",
+        "Enter zone, district, and survey details",
+        "Submit captcha",
+        "View EC and application status"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "TNREGINET EC Search Fees"
+    },
+    {
+      "type": "table",
+      "headers": ["Type of Search", "Fees"],
+      "rows": [
+        ["EC Application Fee", "Re 1"],
+        ["Search fee for one year", "Rs 30"],
+        ["Search fee for additional year", "Rs 10"],
+        ["Computerized period (from 1987)", "Rs 100"]
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Services Provided by TNREGINET Portal"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Apply for Encumbrance Certificate",
+        "Register marriage, land, firm and chit fund",
+        "Search guideline value",
+        "Register documents online",
+        "Track EC application status",
+        "Calculate building value",
+        "Search registered properties"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "How to Apply for Documents on TNREGINET"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Login to TNREGINET",
+        "Click Create Application → Create Document",
+        "Fill details and upload documents",
+        "Submit application",
+        "Save and print document"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "How to Check Document Status on TNREGINET"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Login to TNREGINET",
+        "Click Know Your Application Status → My Documents",
+        "Enter registration details",
+        "View application status"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "How to Calculate Building Value on TNREGINET"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Visit tnreginet.gov.in",
+        "Click Calculate Building Value",
+        "Enter building details",
+        "Submit to view calculated value"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "How to Register Property on TNREGINET"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Obtain EC certificate",
+        "Calculate stamp duty and registration charges",
+        "Prepare sale deed",
+        "Book SRO appointment",
+        "Visit SRO for authentication",
+        "Pay charges and complete registration"
+      ]
+    },
+    {
+      "type": "note",
+      "content": "If a document is rejected, a check slip is issued and the document can be resubmitted within 10 days."
+    },
+    {
+      "type": "heading",
+      "content": "Documents Required for Property Registration"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Encumbrance Certificate",
+        "Stamp duty challan or DD",
+        "Original property documents",
+        "Property card",
+        "ID proofs of buyer, seller and witnesses",
+        "PAN and Aadhaar cards",
+        "Address proof"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Online Payment on TNREGINET"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Net Banking",
+        "Debit / Credit Card",
+        "UPI Payment",
+        "RTGS / NEFT challan"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Documents Required for Encumbrance Certificate"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Property address proof",
+        "Survey or Patta number",
+        "Previous deed details",
+        "Property registration documents",
+        "Applicant identity proof",
+        "Period for which EC is required",
+        "Application form",
+        "Payment receipt"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Limitations of TNREGINET Portal"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Guideline value may differ from market price",
+        "Website may be slow during peak hours",
+        "New layouts may not be updated immediately",
+        "Errors possible due to incorrect survey details"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "TNREGINET Contact Details"
+    },
+    {
+      "type": "note",
+      "content": "Helpline: 044-24640160 | Email: helpdesk@tnreginet.net | Service hours: Weekdays 8 AM–8 PM, Saturdays 10 AM–5 PM"
+    },
+    {
+      "type": "summary",
+      "content": "TNREGINET has simplified registration and documentation services in Tamil Nadu by enabling online access to guideline values, EC applications, document registration, and status tracking with improved transparency and efficiency."
+    }
+  ]
+}

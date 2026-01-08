@@ -1,0 +1,145 @@
+{
+  "title": "Chennai Metro: Route, Map, Timings, Fare and Latest Updates",
+  "intro": "The Chennai Metro has made daily commuting easier across the city. Understanding metro routes, fares, timings and upcoming projects helps travellers plan smooth and efficient journeys.",
+  "sections": [
+    {
+      "type": "text",
+      "content": "Chennai Metro is a rapid transit system serving Tamil Nadu’s capital city. Launched in 2015, it is India’s fourth-longest metro network and is operated by Chennai Metro Rail Corporation (CMRL)."
+    },
+    {
+      "type": "heading",
+      "content": "Key Facts About Chennai Metro"
+    },
+    {
+      "type": "table",
+      "headers": ["Particulars", "Details"],
+      "rows": [
+        ["Owner & Operator", "Chennai Metro Rail Limited (CMRL)"],
+        ["Began On", "29 June 2015"],
+        ["Operational Lines", "2"],
+        ["Under Construction Lines", "3"],
+        ["Metro Stations", "42"],
+        ["Daily Ridership", "0.25 million (2023)"],
+        ["Annual Ridership", "70.7 million (2022–23)"],
+        ["Station Type", "Underground and Elevated"],
+        ["Top Speed", "120 km/hr"],
+        ["Operating Timings", "4:30 AM – 11:00 PM"]
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Chennai Metro Route Map"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Operational Lines: Blue Line, Green Line",
+        "Under Construction Lines: Purple Line, Orange Line, Red Line"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Operational Metro Lines"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Blue Line (Line 1): Wimco Nagar Depot to Chennai International Airport",
+        "Green Line (Line 2): Chennai Central to St. Thomas Mount"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Chennai Metro Blue Line (Line 1)"
+    },
+    {
+      "type": "text",
+      "content": "The Blue Line runs from Wimco Nagar Depot to Chennai International Airport and has 26 stations. Thirteen stations are underground and thirteen are elevated, offering seamless airport connectivity."
+    },
+    {
+      "type": "heading",
+      "content": "Chennai Metro Green Line (Line 2)"
+    },
+    {
+      "type": "text",
+      "content": "The Green Line connects Chennai Central with St. Thomas Mount and has 17 stations. It links central, western and southern parts of Chennai and integrates with MRTS and suburban railways."
+    },
+    {
+      "type": "heading",
+      "content": "Under Construction Metro Lines"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Purple Line (Line 3): Madhavaram Milk Colony to Siruseri SIPCOT 2",
+        "Orange Line (Line 4): Poonamallee Bypass to Lighthouse",
+        "Red Line (Line 5): Madhavaram Milk Colony to Sholinganallur"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Chennai Metro Timings"
+    },
+    {
+      "type": "text",
+      "content": "Metro services operate daily from 4:30 AM to 11:00 PM. During peak hours, trains run every 4–5 minutes, while during non-peak hours the frequency is around 15 minutes."
+    },
+    {
+      "type": "heading",
+      "content": "Chennai Metro Fares"
+    },
+    {
+      "type": "text",
+      "content": "Metro fares range between Rs 10 and Rs 50 depending on the distance travelled. Chennai Metro offers affordable ticketing options for daily commuters."
+    },
+    {
+      "type": "heading",
+      "content": "Ticket Types Available"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Single Journey Tokens",
+        "Smart Value Cards (20% discount on fares)",
+        "Trip Cards for frequent travellers",
+        "Tourist Cards for unlimited one-day travel",
+        "QR Code Tickets",
+        "Singara Chennai Card under NCMC scheme"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Chennai Metro Phase 2 Updates"
+    },
+    {
+      "type": "text",
+      "content": "Phase 2 of the Chennai Metro is under development with major funding from the Tamil Nadu government. Several corridors are nearing completion and services are expected to start in phases by 2027–2028."
+    },
+    {
+      "type": "heading",
+      "content": "Impact of Chennai Metro on Real Estate"
+    },
+    {
+      "type": "text",
+      "content": "The Chennai Metro has significantly boosted real estate growth along metro corridors. Property prices in areas such as Guindy, Anna Nagar, Vadapalani and T. Nagar have increased by 20–40%."
+    },
+    {
+      "type": "heading",
+      "content": "Future Metro Projects"
+    },
+    {
+      "type": "list",
+      "items": [
+        "St. Thomas Mount–Adambakkam corridor",
+        "Poonamallee–Sriperumbudur extension to Parandur Airport",
+        "Metro projects planned for Trichy, Coimbatore and Madurai",
+        "Proposed Semi High-Speed Rail Corridors across Tamil Nadu",
+        "Chennai Water Metro project inspired by Kochi Water Metro"
+      ]
+    },
+    {
+      "type": "summary",
+      "content": "Chennai Metro continues to transform urban mobility by reducing travel time and improving connectivity. With multiple expansions underway, the metro system is set to play a major role in Chennai’s future development."
+    }
+  ]
+}

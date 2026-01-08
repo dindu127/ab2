@@ -23,7 +23,34 @@
       <ul class="nav-left">
 
         <li><a routerLink="/" (click)="closeAll()">Home</a></li>
+        
+    <!-- OTHER LINKS (VISIBLE TO ALL) -->
+    <li class="dropdown">
+      <button class="dropdown-trigger"  (click)="toggleOtherLinks($event)">Other Links <span class="caret"></span></button>
 
+      <ul class="dropdown-menu" [class.open]="otherLinksOpen"><li>
+          <a routerLink="/blog/chennai-property-tax" (click)="closeAll()">Chennai Property Tax</a></li>
+        <li>
+          <a routerLink="/blog/chennai-metro" (click)="closeAll()"> Chennai Metro </a> </li>
+        <li>
+          <a routerLink="/blog/home-loan-documents-required" (click)="closeAll()">Home Loan Documents</a>
+        </li>
+        <li>
+          <a routerLink="/blog/patta-chitta-online-2025" (click)="closeAll()"> Patta Chitta Online
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/blog/tnreginet-2025" (click)="closeAll()">TNREGINET 2025</a>
+        </li>
+
+        <li>
+          <a routerLink="/blog/stamp-duty-tamil-nadu-2025" (click)="closeAll()">Stamp Duty TN</a>
+        </li>
+      </ul>
+    </li>
+
+        
         <!-- DASHBOARD -->
         <li *ngIf="isLoggedIn" class="dropdown">
           <button class="dropdown-trigger" (click)="toggleDashboard($event)">

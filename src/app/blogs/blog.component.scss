@@ -1,0 +1,97 @@
+.blog-wrapper {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  line-height: 1.7;
+}
+
+.blog-title {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.blog-intro {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+h2 {
+  margin-top: 32px;
+  font-size: 22px;
+}
+
+h3 {
+  margin-top: 22px;
+  font-size: 18px;
+}
+
+p {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+ul {
+  padding-left: 22px;
+  margin-bottom: 16px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* ✅ LARGE TABLE SUPPORT */
+.table-container {
+  overflow-x: auto;
+  margin: 18px 0;
+}
+
+table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background: #f3f6fa;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* NOTE BOX */
+.note {
+  background: #fffbe6;
+  border-left: 4px solid #ffcc00;
+  padding: 12px;
+  margin: 16px 0;
+  font-weight: 500;
+}
+
+/* SUMMARY BOX */
+.summary {
+  background: #f0f6ff;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 30px;
+  font-weight: 500;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .blog-wrapper {
+    padding: 20px;
+  }
+
+  .blog-title {
+    font-size: 26px;
+  }
+}

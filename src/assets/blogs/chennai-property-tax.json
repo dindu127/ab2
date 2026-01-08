@@ -1,0 +1,140 @@
+{
+  "title": "Chennai Property Tax 2025: How to Calculate & Pay Online",
+  "intro": "Easily pay your property tax in Chennai via the official website of Greater Chennai Corporation. Property tax (Sotthu Vari) can be paid both online and offline and is calculated using the Reasonable Letting Value (RLV).",
+  "sections": [
+    {
+      "type": "text",
+      "content": "The Greater Chennai Corporation levies property tax on residential and non-residential properties within city limits. Chennai is divided into 15 zones, and the tax is collected half-yearly."
+    },
+    {
+      "type": "heading",
+      "content": "How to Calculate Property Tax in Chennai"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Visit the Chennai Corporation online portal",
+        "Click on Online Civic Services and choose Property Tax Calculator",
+        "Enter building type, area, location, occupancy type, and floors",
+        "Submit the form to view tax amount"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Half-Yearly Property Tax Rates"
+    },
+    {
+      "type": "table",
+      "headers": ["Annual Value", "Half-Year Tax (%)"],
+      "rows": [
+        ["Re 1 to Rs 500", "3.75%"],
+        ["Rs 501 to Rs 1,000", "6.75%"],
+        ["Rs 1,001 to Rs 5,000", "7.75%"],
+        ["Rs 5,001 and above", "9.00%"]
+      ]
+    },
+    {
+      "type": "highlight",
+      "content": "Property Tax = Base Value × Built-up Area × Age Factor × Building Type × Usage Category × Floor Factor"
+    },
+    {
+      "type": "heading",
+      "content": "How to Pay Property Tax in Chennai Online"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Go to chennaicorporation.gov.in",
+        "Click Online Services → Property Tax",
+        "Select Property Tax Status / Pay Tax",
+        "Enter zone number, division code, bill number and sub number",
+        "Choose payment period and pay using card or net banking"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "How to Pay Property Tax in Chennai Offline"
+    },
+    {
+      "type": "text",
+      "content": "Offline payments can be made via cheque or demand draft addressed to The Revenue Officer, Corporation of Chennai. Payments are accepted at authorised banks, E-seva centres and TACTC offices."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Indian Bank",
+        "Indian Overseas Bank",
+        "State Bank of India",
+        "HDFC Bank",
+        "Canara Bank",
+        "Punjab National Bank",
+        "Karur Vysya Bank",
+        "IDBI Bank",
+        "Yes Bank",
+        "IndusInd Bank"
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Chennai House Tax Rates"
+    },
+    {
+      "type": "table",
+      "headers": ["Property Type", "Min (Rs/sq.ft)", "Max (Rs/sq.ft)"],
+      "rows": [
+        ["Residential", "0.60", "2.40"],
+        ["Non-Residential", "4.00", "12.00"]
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Chennai Property Tax Zones (2025)"
+    },
+    {
+      "type": "table",
+      "headers": ["Zone", "Area"],
+      "rows": [
+        ["Zone 1", "Thiruvottiyur"],
+        ["Zone 2", "Manali"],
+        ["Zone 3", "Madhavaram"],
+        ["Zone 4", "Tondiarpet"],
+        ["Zone 5", "Royapuram"],
+        ["Zone 6", "Thiru.Vi.Ka Nagar"],
+        ["Zone 7", "Ambattur"],
+        ["Zone 8", "Anna Nagar"],
+        ["Zone 9", "Teynampet"],
+        ["Zone 10", "Kodambakkam"],
+        ["Zone 11", "Valasaravakkam"],
+        ["Zone 12", "Alandur"],
+        ["Zone 13", "Adyar"],
+        ["Zone 14", "Perungudi"],
+        ["Zone 15", "Sholinganallur"]
+      ]
+    },
+    {
+      "type": "heading",
+      "content": "Rebate on Chennai Property Tax"
+    },
+    {
+      "type": "text",
+      "content": "A 5% rebate up to ₹5,000 is offered for FY 2025–26 if the second half-year property tax is paid before 30th October 2025."
+    },
+    {
+      "type": "heading",
+      "content": "Chennai Property Tax Exemptions"
+    },
+    {
+      "type": "list",
+      "items": [
+        "25% discount for buildings older than 4 years",
+        "25% discount for owner-occupied residential properties",
+        "10% discount for owner-occupied non-residential properties",
+        "20% discount for semi-permanent buildings"
+      ]
+    },
+    {
+      "type": "summary",
+      "content": "Chennai property tax can be paid online or offline through official channels. Timely payment helps avoid penalties and ensures uninterrupted civic services."
+    }
+  ]
+}
