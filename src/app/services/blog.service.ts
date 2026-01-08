@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
 
-  // 🔴 CHANGE THIS to your real API base URL if needed
-  private apiUrl = 'https://landportal-api-a5c6hdcdaaqwemas.centralindia-01.azurewebsites.net/api/blogs';
+  private api = environment.apiUrl + '/api/blogs';
 
   constructor(private http: HttpClient) {}
 
   getBlogBySlug(slug: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${slug}`);
+    return this.http.get(`${this.api}/${slug}`);
   }
 }
