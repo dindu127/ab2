@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '../services/blog.service';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   imports:[CommonModule],
@@ -11,29 +12,31 @@ import { CommonModule } from '@angular/common';
 })
 export class BlogComponent implements OnInit {
 
-  blog: any = null;
+  htmlContent = '';
 blogData: any;
+  blog: any;
 
   constructor(
     private route: ActivatedRoute,
-    private blogService: BlogService
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
       if (slug) {
-        this.loadBlog(slug);
+        this.loadStaticBlog(slug);
       }
     });
   }
 
-  loadBlog(slug: string): void {
-    this.blog = null;
+    loadStaticBlog(slug: string): void {
+      const path = `assets/blogs/${slug}.json`;
 
-    this.blogService.getBlogBySlug(slug).subscribe({
-      next: res => this.blog = res,
-      error: err => console.error('Blog load error', err)
-    });
-  }
+      this.http.get<any>(path).subscribe({
+        next: data => this.blog = data,
+        error: () => this.blog = null
+      });
+    }
+
 }
