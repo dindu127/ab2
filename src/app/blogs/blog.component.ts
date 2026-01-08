@@ -31,9 +31,16 @@ export class BlogComponent implements OnInit {
   }
 
   loadBlog(slug: string): void {
+    this.blog = null; // 🔥 IMPORTANT
+    console.log('Loading blog:', slug);
     this.blogService.getBlogBySlug(slug).subscribe({
-      next: (res) => this.blog = res,
-      error: (err) => console.error('Blog load error', err)
+      next: (res) => {
+        this.blog = res;
+      },
+      error: (err) => {
+        console.error('Blog load error', err);
+      }
     });
   }
+
 }
