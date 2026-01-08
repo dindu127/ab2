@@ -28,9 +28,11 @@ import { BlogComponent } from './blogs/blog.component';
 
 export const routes: Routes = [
   
-  {path: 'blog/:slug', component: BlogComponent },
+
   /* ---------------- HOME ---------------- */
   { path: '', component: HomeComponent, pathMatch: 'full' },
+
+    {path: 'blog/:slug', component: BlogComponent },
 
   /* ---------------- PROPERTY DETAIL ---------------- */
   { path: 'property/:id', component: PropertyDetailComponent },
