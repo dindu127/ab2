@@ -32,7 +32,7 @@ export const routes: Routes = [
   /* ---------------- HOME ---------------- */
   { path: '', component: HomeComponent, pathMatch: 'full' },
 
-    {path: 'blog/:slug', component: BlogComponent, runGuardsAndResolvers: 'always' },
+    {path: 'blog/:slug', component: BlogComponent},
 
   /* ---------------- PROPERTY DETAIL ---------------- */
   { path: 'property/:id', component: PropertyDetailComponent },
