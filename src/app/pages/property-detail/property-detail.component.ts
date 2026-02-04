@@ -321,9 +321,9 @@ export class PropertyDetailComponent implements OnInit {
       propertyId: this.property.id,
       ownerId: '',
       ownerName: 'LandPortal Support',
-      phone: '+91 98765 43210',
-      email: 'support@landportal.app',
-      whatsapp: '+91 98765 43210',
+      phone: '+91 99414 82833',
+      email: 'support@absquare.com',
+      whatsapp: '+91 99414 82833',
       isUnlocked: true
     };
     this.showFreeContact = true;
