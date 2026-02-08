@@ -42,6 +42,11 @@ export class AuthService {
     if (t) localStorage.setItem(this.TOKEN_KEY, t);
     else localStorage.removeItem(this.TOKEN_KEY);
   }
+  private setToken(token: string | null) {
+    token
+      ? localStorage.setItem(this.TOKEN_KEY, token)
+      : localStorage.removeItem(this.TOKEN_KEY);
+  }
 
   // ---------------- PUBLIC HELPERS ----------------
   isLoggedIn(): boolean {
@@ -49,9 +54,7 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    const role = localStorage.getItem(this.ROLE_KEY);
-    if (!role) return false;
-    return role.toLowerCase() === 'admin';
+    return localStorage.getItem(this.ROLE_KEY)?.toLowerCase() === 'admin';
   }
 
   getCurrentUserSnapshot(): UserProfile | null {
@@ -66,69 +69,69 @@ export class AuthService {
   login(payload: { email?: string; phone?: string; password: string }): Observable<any> {
     return this.http.post<any>(`${this.base}/Auth/login`, payload).pipe(
       tap(res => {
-        const token = res?.accessToken ?? res?.token ?? null;
+        const token = res?.accessToken ?? res?.token;
+        if (!token) return;
 
-        if (token) {
-          this.saveToken(token);
-        try {
-          // STORE USER DATA IN LOCALSTORAGE (so other parts of the app can read)
-          localStorage.setItem(this.USER_ID_KEY, (res?.userId ?? res?.user?.id ?? '')?.toString?.() ?? '');
-          localStorage.setItem(this.ROLE_KEY, (res?.role ?? res?.user?.role ?? '')?.toString?.() ?? '');
-         } catch { 
-          // update BehaviorSubject if response includes user details
-          const mapped: UserProfile = {
-            userId: res?.userId?.toString?.() ?? res?.user?.id ?? null,
-            email: res?.email ?? res?.user?.email ?? null,
-            fullName: res?.fullName ?? res?.user?.fullName ?? null,
-            phone: res?.phone ?? res?.user?.phone ?? null,
-            role: res?.role ?? res?.user?.role ?? null
-          };
+        this.setToken(token);
 
-          this._currentUser.next(mapped);}
-        }
+        const user: UserProfile = {
+          userId: res?.userId ?? res?.user?.id ?? null,
+          email: res?.email ?? res?.user?.email ?? null,
+          fullName: res?.fullName ?? res?.user?.fullName ?? null,
+          phone: res?.phone ?? res?.user?.phone ?? null,
+          role: res?.role ?? res?.user?.role ?? null
+        };
+
+        this.persistUser(user);
       })
     );
+  }
+
+    private persistUser(user: UserProfile) {
+    localStorage.setItem(this.USER_ID_KEY, user.userId ?? '');
+    localStorage.setItem(this.ROLE_KEY, user.role ?? '');
+    this._currentUser.next(user);
   }
 
   // ---------------- REGISTER ----------------
-  register(payload: { email: string; phone: string; password: string; fullName: string }) {
-    return this.http.post<any>(`${this.base}/Auth/register`, payload).pipe(
-      tap(res => {
-        const token = res?.accessToken ?? res?.token ?? null;
+ register(payload: { email: string; phone: string; password: string; fullName: string }) {
+  return this.http.post<any>(`${this.base}/Auth/register`, payload).pipe(
+    tap(res => {
+      const token = res?.accessToken ?? res?.token;
+      if (!token) return;
 
-        if (token) {
-          this.saveToken(token);
+      // save JWT
+      this.setToken(token);
 
-          localStorage.setItem(this.USER_ID_KEY, (res?.userId ?? res?.user?.id ?? '')?.toString?.() ?? '');
-          localStorage.setItem(this.ROLE_KEY, (res?.role ?? res?.user?.role ?? '')?.toString?.() ?? '');
+      // map user from response (lightweight)
+      const user: UserProfile = {
+        userId: res?.userId ?? res?.user?.id ?? null,
+        email: res?.email ?? res?.user?.email ?? null,
+        fullName: res?.fullName ?? res?.user?.fullName ?? null,
+        phone: res?.phone ?? res?.user?.phone ?? null,
+        role: res?.role ?? res?.user?.role ?? 'User'
+      };
 
-          const mapped: UserProfile = {
-            userId: res?.userId?.toString?.() ?? res?.user?.id ?? null,
-            email: res?.email ?? res?.user?.email ?? null,
-            fullName: res?.fullName ?? res?.user?.fullName ?? null,
-            phone: res?.phone ?? res?.user?.phone ?? null,
-            role: res?.role ?? res?.user?.role ?? null
-          };
+      // SINGLE source of truth
+      this.persistUser(user);
+    })
+  );
+}
 
-          this._currentUser.next(mapped);
-        }
-      })
-    );
-  }
 
   // ---------------- LOGOUT ----------------
   logout(): void {
-    this.saveToken(null);
+    this.setToken(null);
     localStorage.removeItem(this.USER_ID_KEY);
     localStorage.removeItem(this.ROLE_KEY);
     this._currentUser.next(null);
   }
 
-  refreshProfile() {
-    return this.http.get<any>(`${environment.apiUrl}/auth/me`).pipe(
+refreshProfile(): Observable<any> {
+    return this.http.get<any>(`${this.base}/Auth/me`).pipe(
       tap(profile => {
-        const mapped: UserProfile = {
-          userId: profile?.id ?? profile?.userId ?? null,
+        const user: UserProfile = {
+          userId: profile?.id ?? null,
           email: profile?.email ?? null,
           fullName: profile?.fullName ?? null,
           phone: profile?.phone ?? null,
@@ -136,7 +139,7 @@ export class AuthService {
           profilePhotoUrl: profile?.profilePhotoUrl ?? null
         };
 
-        this._currentUser.next(mapped); // ⭐ THIS FIXES HEADER
+        this.persistUser(user);
       })
     );
   }
@@ -195,13 +198,12 @@ export class AuthService {
     return this.http.post(`${this.base}/auth/verify-email-otp`, { email, otp });
   }
 
-  uploadProfilePhoto(file: File) {
+uploadProfilePhoto(file: File) {
     const form = new FormData();
-    form.append('file', file); // MUST be 'file'
+    form.append('file', file);
 
-    return this.http.post<any>(
-      `${this.base}/Auth/profile-photo`,
-      form
+    return this.http.post(`${this.base}/Auth/profile-photo`, form).pipe(
+      switchMap(() => this.refreshProfile())
     );
   }
 }
